@@ -57,6 +57,14 @@ public class Inicio extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Repuestos");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				guiRepuestos newframe = new guiRepuestos();
+				newframe.setVisible(true);
+				
+			}
+		});
 		btnNewButton_1.setBounds(191, 10, 115, 27);
 		contentPane.add(btnNewButton_1);
 		
@@ -71,6 +79,10 @@ public class Inicio extends JFrame {
 		JButton btnNewButton_4 = new JButton("Tiendas");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				guiTiendas newframe = new guiTiendas();
+				newframe.setVisible(true);
+				
 			}
 		});
 		btnNewButton_4.setBounds(567, 10, 115, 27);

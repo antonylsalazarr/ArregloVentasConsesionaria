@@ -1,6 +1,6 @@
 package clases;
 
-public class Venta {
+public class Vehiculos {
 	//con los atributos privados: código, nombre, nota1 y nota2; un
 		//constructor, los métodos de acceso público set/ get y el método promedio.
 		
@@ -9,7 +9,7 @@ public class Venta {
 		private double precio;
 		private String tipo, marca,potencia, descripcion;
 		
-		public Venta(int codigo, String tipo, String marca, double precio, String potencia, String descripcion) {
+		public Vehiculos(int codigo, String tipo, String marca, double precio, String potencia, String descripcion) {
 			this.codigo= codigo;
 			this.tipo= tipo;
 			this.marca= marca;

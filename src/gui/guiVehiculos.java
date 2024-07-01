@@ -15,16 +15,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import clases.Venta;
-import arreglo.ArregloVenta;
+import clases.Vehiculos;
+import arreglo.ArregloVehiculos;
 public class guiVehiculos extends JFrame implements ActionListener {
 	
 	
 	private DefaultTableModel modelo;
-	ArregloVenta aa = new ArregloVenta();
+	ArregloVehiculos aa = new ArregloVehiculos();
 	
 	//Implementa el metodo Listar
-			void Listar(ArregloVenta objeto) {
+			void Listar(ArregloVehiculos objeto) {
 				modelo.setRowCount(0); 
 				for(int i=0; i<objeto.tamaño(); i++) {
 					int cod =aa.obtener(i).getCodigo();
@@ -95,7 +95,7 @@ public class guiVehiculos extends JFrame implements ActionListener {
 	 */
 	public guiVehiculos() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 700, 412);
+		setBounds(100, 100, 789, 501);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLocationRelativeTo(null);
@@ -106,60 +106,66 @@ public class guiVehiculos extends JFrame implements ActionListener {
 		
 		lblNewLabel = new JLabel("Código:");
 		lblNewLabel.setBounds(10, 11, 65, 22);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(lblNewLabel);
 		
 		lblTipoDeAuto = new JLabel("Tipo:");
 		lblTipoDeAuto.setBounds(86, 11, 65, 22);
-		lblTipoDeAuto.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblTipoDeAuto.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(lblTipoDeAuto);
 		
 		lblMarca = new JLabel("Marca:");
 		lblMarca.setBounds(161, 11, 65, 22);
-		lblMarca.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblMarca.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(lblMarca);
 		
 		lblPrecio = new JLabel("Precio:");
 		lblPrecio.setBounds(250, 11, 65, 22);
-		lblPrecio.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPrecio.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(lblPrecio);
 		
 		lblPotencia = new JLabel("Potencia:");
 		lblPotencia.setBounds(336, 11, 77, 22);
-		lblPotencia.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPotencia.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(lblPotencia);
 		
 		lblDescripcin = new JLabel("Descripción:");
 		lblDescripcin.setBounds(423, 11, 97, 22);
-		lblDescripcin.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblDescripcin.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(lblDescripcin);
 		
 		txtCodigo = new JTextField();
+		txtCodigo.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtCodigo.setBounds(10, 36, 65, 20);
 		contentPane.add(txtCodigo);
 		txtCodigo.setColumns(10);
 		
 		txtTipo = new JTextField();
+		txtTipo.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtTipo.setBounds(86, 36, 65, 20);
 		txtTipo.setColumns(10);
 		contentPane.add(txtTipo);
 		
 		txtMarca = new JTextField();
+		txtMarca.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtMarca.setBounds(161, 36, 65, 20);
 		txtMarca.setColumns(10);
 		contentPane.add(txtMarca);
 		
 		txtPrecio = new JTextField();
+		txtPrecio.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtPrecio.setBounds(250, 36, 76, 20);
 		txtPrecio.setColumns(10);
 		contentPane.add(txtPrecio);
 		
 		txtPotencia = new JTextField();
+		txtPotencia.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtPotencia.setBounds(336, 36, 77, 20);
 		txtPotencia.setColumns(10);
 		contentPane.add(txtPotencia);
 		
 		txtDescripcion = new JTextField();
+		txtDescripcion.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtDescripcion.setBounds(423, 36, 230, 20);
 		txtDescripcion.setColumns(10);
 		contentPane.add(txtDescripcion);
@@ -167,40 +173,43 @@ public class guiVehiculos extends JFrame implements ActionListener {
 		btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(this);
 		btnAdicionar.setBounds(10, 90, 102, 23);
-		btnAdicionar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnAdicionar.setFont(new Font("Arial", Font.BOLD, 14));
 		contentPane.add(btnAdicionar);
 		
 		btnConsultar = new JButton("Consultar");
 		btnConsultar.addActionListener(this);
 		btnConsultar.setBounds(10, 135, 102, 23);
-		btnConsultar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnConsultar.setFont(new Font("Arial", Font.BOLD, 14));
 		contentPane.add(btnConsultar);
 		
 		btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(this);
 		btnModificar.setBounds(10, 181, 102, 23);
-		btnModificar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnModificar.setFont(new Font("Arial", Font.BOLD, 14));
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(this);
 		btnEliminar.setBounds(10, 226, 102, 23);
-		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnEliminar.setFont(new Font("Arial", Font.BOLD, 14));
 		contentPane.add(btnEliminar);
 		
 		btnImprimir = new JButton("Imprimir");
 		btnImprimir.addActionListener(this);
 		btnImprimir.setBounds(10, 300, 102, 23);
-		btnImprimir.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnImprimir.setFont(new Font("Arial", Font.BOLD, 14));
 		contentPane.add(btnImprimir);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(123, 67, 550, 300);
+		scrollPane.setBounds(123, 67, 642, 387);
 		contentPane.add(scrollPane);
 		
 		tblTabla = new JTable();
 		tblTabla.setFillsViewportHeight(true);
 		scrollPane.setViewportView(tblTabla);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane.setColumnHeaderView(scrollPane_1);
 		
 		//Modelo
 		modelo = new DefaultTableModel(); 
@@ -210,8 +219,6 @@ public class guiVehiculos extends JFrame implements ActionListener {
 		modelo.addColumn("Precio"); 
 		modelo.addColumn("Potencia"); 
 		modelo.addColumn("Descripcion");
-		
-		tblTabla.setModel(modelo); 
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnModificar) {
@@ -245,9 +252,9 @@ public class guiVehiculos extends JFrame implements ActionListener {
         String des = txtDescripcion.getText().toString();
         
         // buscando el codigo si existe o no.
-        Venta resultado = aa.buscar(cod);
+        Vehiculos resultado = aa.buscar(cod);
         if (resultado == null) {
-            aa.adicionar(new Venta(cod, tip, mar, pre, pot, des));
+            aa.adicionar(new Vehiculos(cod, tip, mar, pre, pot, des));
             modelo.setRowCount(0); tblTabla.setModel(modelo);
             LimpiarControles();
             Listar(aa);
@@ -260,7 +267,7 @@ public class guiVehiculos extends JFrame implements ActionListener {
 	protected void actionPerformedBtnConsultar(ActionEvent e) {
 		int cod = Integer.parseInt(JOptionPane.showInputDialog("Ingrese Codigo"));
         //int cod = Integer.parseInt(txtCodigo.getText());
-        Venta Resultado = aa.buscar(cod);
+        Vehiculos Resultado = aa.buscar(cod);
         int pos = aa.buscarPosicion(cod);
         if (Resultado != null) {
             txtCodigo.setText(Integer.toString(aa.obtener(pos).getCodigo()));
@@ -289,7 +296,7 @@ public class guiVehiculos extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedBtnEliminar(ActionEvent e) {
 		int cod =Integer.parseInt(JOptionPane.showInputDialog("Ingrese Codigo"));
-        Venta Resultado = aa.buscar(cod);
+        Vehiculos Resultado = aa.buscar(cod);
         if (Resultado != null) {
             aa.eliminar(Resultado);
             Listar(aa);
@@ -301,7 +308,7 @@ public class guiVehiculos extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedBtnModificar(ActionEvent e) {
 		int cod =Integer.parseInt(JOptionPane.showInputDialog("Ingrese Codigo"));
-        Venta Resultado = aa.buscar(cod);
+        Vehiculos Resultado = aa.buscar(cod);
         int pos = aa.buscarPosicion(cod);
         if (Resultado != null) {
             cod = Integer.parseInt(txtCodigo.getText());
