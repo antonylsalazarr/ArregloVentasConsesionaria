@@ -3,6 +3,7 @@ package arreglo;
 import java.util.ArrayList;
 import java.util.List;
 import clases.Repuestos;
+import clases.Tiendas;
 
 public class ArregloRepuestos {
     private List<Repuestos> repuestos;

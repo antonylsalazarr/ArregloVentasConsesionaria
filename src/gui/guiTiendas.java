@@ -156,7 +156,7 @@ public class guiTiendas extends JFrame {
 				}
 			}
 		});
-		btnAdicionar.setFont(new Font("Arial", Font.BOLD, 14));
+		btnAdicionar.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnAdicionar.setBounds(10, 91, 102, 23);
 		contentPane.add(btnAdicionar);
 		
@@ -176,6 +176,7 @@ public class guiTiendas extends JFrame {
                         txtDpto.setText(c.getDepartamento());
                         txtProvincia.setText("" + c.getProvincia());
                         txtDistrito.setText("" + c.getDistrito());
+                        txtNempleados.setText("" + c.getNempleados());
                         txtCodigo.requestFocus();
                     }
                 }
@@ -186,7 +187,7 @@ public class guiTiendas extends JFrame {
 				
 			}
 		});
-		btnConsultar.setFont(new Font("Arial", Font.BOLD, 14));
+		btnConsultar.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnConsultar.setBounds(10, 136, 102, 23);
 		contentPane.add(btnConsultar);
 		
@@ -240,7 +241,7 @@ public class guiTiendas extends JFrame {
 				}
 			}
 		});
-		btnModificar.setFont(new Font("Arial", Font.BOLD, 14));
+		btnModificar.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnModificar.setBounds(10, 182, 102, 23);
 		contentPane.add(btnModificar);
 		
@@ -265,7 +266,7 @@ public class guiTiendas extends JFrame {
 				
 			}
 		});
-		btnEliminar.setFont(new Font("Arial", Font.BOLD, 14));
+		btnEliminar.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnEliminar.setBounds(10, 227, 102, 23);
 		contentPane.add(btnEliminar);
 		
@@ -277,8 +278,8 @@ public class guiTiendas extends JFrame {
 				
 			}
 		});
-		btnImprimir.setFont(new Font("Arial", Font.BOLD, 14));
-		btnImprimir.setBounds(10, 301, 102, 23);
+		btnImprimir.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnImprimir.setBounds(10, 418, 102, 23);
 		contentPane.add(btnImprimir);
 		
 		JLabel lblNewLabel = new JLabel("Código:");
@@ -330,6 +331,7 @@ public class guiTiendas extends JFrame {
 		contentPane.add(scrollPane);
 		
 		tblTiendas = new JTable();
+		tblTiendas.setFont(new Font("Consolas", Font.BOLD, 14));
 		tblTiendas.setFillsViewportHeight(true);
 		scrollPane.setViewportView(tblTiendas);
 		

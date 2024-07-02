@@ -22,20 +22,13 @@ import funciones.Concesionario_FuncionesPublicas;
 import java.awt.Font;
 
 public class guiRepuestos extends JFrame {
-
-    /**
-	 * 
-	 */
+    
 	private JTextField txtCodigo, txtNombre, txtPrecio, txtCantidad;
     private JTable table;
     private DefaultTableModel model;
     private JComboBox comboBoxEstado;
     private ArregloRepuestos ArregloRepuestos;
     
-
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -62,27 +55,27 @@ public class guiRepuestos extends JFrame {
         getContentPane().setLayout(null);
         setLocationRelativeTo(null);
 
-        JLabel lblCodigoRepuesto = new JLabel("<html>Código del<br>Repuesto:</html>");
-        lblCodigoRepuesto.setFont(new Font("Arial", Font.PLAIN, 12));
+        JLabel lblCodigoRepuesto = new JLabel("<html>Código:");
+        lblCodigoRepuesto.setFont(new Font("Arial", Font.PLAIN, 14));
         lblCodigoRepuesto.setHorizontalAlignment(SwingConstants.LEFT);
         lblCodigoRepuesto.setBounds(19, 26, 80, 25);
         getContentPane().add(lblCodigoRepuesto);
 
         txtCodigo = new JTextField();
-        txtCodigo.setBounds(89, 26, 80, 25);
+        txtCodigo.setBounds(74, 28, 80, 25);
         getContentPane().add(txtCodigo);
 
         JLabel lblNombreRepuesto = new JLabel("Nombre del Repuesto:");
-        lblNombreRepuesto.setFont(new Font("Arial", Font.PLAIN, 12));
-        lblNombreRepuesto.setBounds(179, 26, 145, 25);
+        lblNombreRepuesto.setFont(new Font("Arial", Font.PLAIN, 14));
+        lblNombreRepuesto.setBounds(190, 26, 145, 25);
         getContentPane().add(lblNombreRepuesto);
 
         txtNombre = new JTextField();
-        txtNombre.setBounds(316, 26, 353, 25);
+        txtNombre.setBounds(334, 26, 353, 25);
         getContentPane().add(txtNombre);
 
         JLabel lblPrecio = new JLabel("Precio:");
-        lblPrecio.setFont(new Font("Arial", Font.PLAIN, 12));
+        lblPrecio.setFont(new Font("Arial", Font.PLAIN, 14));
         lblPrecio.setBounds(452, 61, 51, 25);
         getContentPane().add(lblPrecio);
 
@@ -91,38 +84,44 @@ public class guiRepuestos extends JFrame {
         getContentPane().add(txtPrecio);
 
         JLabel lblCantidad = new JLabel("Cantidad:");
-        lblCantidad.setFont(new Font("Arial", Font.PLAIN, 12));
-        lblCantidad.setBounds(19, 62, 60, 25);
+        lblCantidad.setFont(new Font("Arial", Font.PLAIN, 14));
+        lblCantidad.setBounds(19, 62, 80, 25);
         getContentPane().add(lblCantidad);
 
         txtCantidad = new JTextField();
-        txtCantidad.setBounds(89, 62, 65, 25);
+        txtCantidad.setBounds(89, 61, 65, 25);
         getContentPane().add(txtCantidad);
 
         JButton btnAdicionar = new JButton("Adicionar");
+        btnAdicionar.setFont(new Font("Arial", Font.PLAIN, 14));
         btnAdicionar.setBounds(19, 129, 100, 25);
         getContentPane().add(btnAdicionar);
 
         JButton btnConsultar = new JButton("Consultar");
+        btnConsultar.setFont(new Font("Arial", Font.PLAIN, 14));
         btnConsultar.setBounds(19, 174, 100, 25);
         getContentPane().add(btnConsultar);
 
         JButton btnModificar = new JButton("Modificar");
+        btnModificar.setFont(new Font("Arial", Font.PLAIN, 14));
         btnModificar.setBounds(19, 220, 100, 25);
         getContentPane().add(btnModificar);
 
         JButton btnEliminar = new JButton("Eliminar");
+        btnEliminar.setFont(new Font("Arial", Font.PLAIN, 14));
         btnEliminar.setBounds(19, 264, 100, 25);
         getContentPane().add(btnEliminar);
 
         JButton btnImprimir = new JButton("Imprimir");
-        btnImprimir.setBounds(19, 328, 100, 25);
+        btnImprimir.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnImprimir.setBounds(19, 354, 100, 25);
         getContentPane().add(btnImprimir);
 
         String[] columnNames = {"Codigo", "Nombre", "Precio", "Cantidad", "Valor Total", "Estado"};
         model = new DefaultTableModel();
         model.setColumnIdentifiers(columnNames);
         table = new JTable(model);
+        table.setFont(new Font("Consolas", Font.BOLD, 14));
         table.getTableHeader().setReorderingAllowed(false);
         
         JScrollPane scrollPane = new JScrollPane(table);
@@ -130,8 +129,8 @@ public class guiRepuestos extends JFrame {
         getContentPane().add(scrollPane);
         
         JLabel lblEstado = new JLabel("Estado:");
-        lblEstado.setFont(new Font("Arial", Font.PLAIN, 12));
-        lblEstado.setBounds(190, 62, 60, 25);
+        lblEstado.setFont(new Font("Arial", Font.PLAIN, 14));
+        lblEstado.setBounds(200, 61, 60, 25);
         getContentPane().add(lblEstado);
         
         comboBoxEstado = new JComboBox();

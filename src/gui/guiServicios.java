@@ -15,31 +15,31 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import clases.Vehiculos;
-import arreglo.ArregloVehiculos;
+import clases.Servicio;
+import arreglo.ArregloServicios;
 import funciones.Concesionario_FuncionesPublicas;
-import javax.swing.SwingConstants;
 
-public class guiVehiculos extends JFrame implements ActionListener {
+
+
+public class guiServicios extends JFrame implements ActionListener {
 	
 	
 	private DefaultTableModel modelo;
-	ArregloVehiculos aa = new ArregloVehiculos();
+	ArregloServicios aa = new ArregloServicios();
 	Concesionario_FuncionesPublicas fp = new Concesionario_FuncionesPublicas();
 	
-	//Implementa el metodo Listar
-			void Listar(ArregloVehiculos objeto) {
+			void Listar(ArregloServicios objeto) {
 				modelo.setRowCount(0); 
 				for(int i=0; i<objeto.tamaño(); i++) {
 					int cod =aa.obtener(i).getCodigo();
 					String tip= aa.obtener(i).getTipo();
-					String mar= aa.obtener(i).getMarca();
+					String fec= aa.obtener(i).getFecha();
+					String hor= aa.obtener(i).getHora();
 					Double pre =aa.obtener(i).getPrecio();
-					String pot= aa.obtener(i).getPotencia();
 					String des= aa.obtener(i).getDescripcion();
 					
 					
-					Object[] fila = { cod, tip, mar, pre, pot, des};
+					Object[] fila = { cod, tip, fec, hor, pre,des};
 					modelo.addRow(fila);
 				}
 				tblTabla.setModel(modelo);
@@ -49,9 +49,9 @@ public class guiVehiculos extends JFrame implements ActionListener {
 		void LimpiarControles() {
 			txtCodigo.setText("");
 	        txtTipo.setText("");
-	        txtMarca.setText("");
+	        txtFecha.setText("");
+	        txtHora.setText("");
 	        txtPrecio.setText("");
-	        txtPotencia.setText("");
 	        txtDescripcion.setText("");
 	        txtCodigo.requestFocus();
 		}
@@ -66,9 +66,9 @@ public class guiVehiculos extends JFrame implements ActionListener {
 	private JLabel lblDescripcin;
 	private JTextField txtCodigo;
 	private JTextField txtTipo;
-	private JTextField txtMarca;
+	private JTextField txtFecha;
+	private JTextField txtHora;
 	private JTextField txtPrecio;
-	private JTextField txtPotencia;
 	private JTextField txtDescripcion;
 	private JButton btnAdicionar;
 	private JButton btnConsultar;
@@ -77,7 +77,6 @@ public class guiVehiculos extends JFrame implements ActionListener {
 	private JButton btnImprimir;
 	private JScrollPane scrollPane;
 	private JTable tblTabla;
-	private JButton btnListar;
 
 	/**
 	 * Launch the application.
@@ -86,7 +85,7 @@ public class guiVehiculos extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					guiVehiculos frame = new guiVehiculos();
+					guiServicios frame = new guiServicios();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -98,13 +97,13 @@ public class guiVehiculos extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public guiVehiculos() {
+	public guiServicios() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 789, 501);
+		setBounds(100, 100, 832, 525);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLocationRelativeTo(null);
-		setTitle("Vehiculos");
+		setTitle("Servicios");
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -114,22 +113,22 @@ public class guiVehiculos extends JFrame implements ActionListener {
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(lblNewLabel);
 		
-		lblTipoDeAuto = new JLabel("Tipo:");
-		lblTipoDeAuto.setBounds(86, 11, 65, 22);
+		lblTipoDeAuto = new JLabel("Tipo Servicio:");
+		lblTipoDeAuto.setBounds(74, 11, 105, 22);
 		lblTipoDeAuto.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(lblTipoDeAuto);
 		
-		lblMarca = new JLabel("Marca:");
-		lblMarca.setBounds(161, 11, 65, 22);
+		lblMarca = new JLabel("Fecha:");
+		lblMarca.setBounds(189, 11, 65, 22);
 		lblMarca.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(lblMarca);
 		
-		lblPrecio = new JLabel("Precio:");
-		lblPrecio.setBounds(250, 11, 65, 22);
+		lblPrecio = new JLabel("Hora:");
+		lblPrecio.setBounds(261, 11, 65, 22);
 		lblPrecio.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(lblPrecio);
 		
-		lblPotencia = new JLabel("Potencia:");
+		lblPotencia = new JLabel("Precio:");
 		lblPotencia.setBounds(336, 11, 77, 22);
 		lblPotencia.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(lblPotencia);
@@ -140,7 +139,6 @@ public class guiVehiculos extends JFrame implements ActionListener {
 		contentPane.add(lblDescripcin);
 		
 		txtCodigo = new JTextField();
-		txtCodigo.setHorizontalAlignment(SwingConstants.CENTER);
 		txtCodigo.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtCodigo.setBounds(10, 36, 65, 20);
 		contentPane.add(txtCodigo);
@@ -148,28 +146,27 @@ public class guiVehiculos extends JFrame implements ActionListener {
 		
 		txtTipo = new JTextField();
 		txtTipo.setFont(new Font("Arial", Font.PLAIN, 12));
-		txtTipo.setBounds(86, 36, 65, 20);
+		txtTipo.setBounds(86, 36, 79, 20);
 		txtTipo.setColumns(10);
 		contentPane.add(txtTipo);
 		
-		txtMarca = new JTextField();
-		txtMarca.setFont(new Font("Arial", Font.PLAIN, 12));
-		txtMarca.setBounds(161, 36, 65, 20);
-		txtMarca.setColumns(10);
-		contentPane.add(txtMarca);
+		txtFecha = new JTextField();
+		txtFecha.setFont(new Font("Arial", Font.PLAIN, 12));
+		txtFecha.setBounds(175, 36, 65, 20);
+		txtFecha.setColumns(10);
+		contentPane.add(txtFecha);
+		
+		txtHora = new JTextField();
+		txtHora.setFont(new Font("Arial", Font.PLAIN, 12));
+		txtHora.setBounds(250, 36, 76, 20);
+		txtHora.setColumns(10);
+		contentPane.add(txtHora);
 		
 		txtPrecio = new JTextField();
-		txtPrecio.setHorizontalAlignment(SwingConstants.CENTER);
 		txtPrecio.setFont(new Font("Arial", Font.PLAIN, 12));
-		txtPrecio.setBounds(250, 36, 76, 20);
+		txtPrecio.setBounds(336, 36, 77, 20);
 		txtPrecio.setColumns(10);
 		contentPane.add(txtPrecio);
-		
-		txtPotencia = new JTextField();
-		txtPotencia.setFont(new Font("Arial", Font.PLAIN, 12));
-		txtPotencia.setBounds(336, 36, 77, 20);
-		txtPotencia.setColumns(10);
-		contentPane.add(txtPotencia);
 		
 		txtDescripcion = new JTextField();
 		txtDescripcion.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -203,12 +200,12 @@ public class guiVehiculos extends JFrame implements ActionListener {
 		
 		btnImprimir = new JButton("Imprimir");
 		btnImprimir.addActionListener(this);
-		btnImprimir.setBounds(10, 418, 102, 23);
+		btnImprimir.setBounds(10, 443, 102, 23);
 		btnImprimir.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(btnImprimir);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(123, 67, 642, 387);
+		scrollPane.setBounds(123, 67, 685, 411);
 		contentPane.add(scrollPane);
 		
 		tblTabla = new JTable();
@@ -216,10 +213,16 @@ public class guiVehiculos extends JFrame implements ActionListener {
 		tblTabla.setFillsViewportHeight(true);
 		scrollPane.setViewportView(tblTabla);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane.setColumnHeaderView(scrollPane_1);
+		//Modelo
+		modelo = new DefaultTableModel(); 
+		modelo.addColumn("Código"); 
+		modelo.addColumn("Tipo Servicio"); 
+		modelo.addColumn("Fecha"); 
+		modelo.addColumn("Hora"); 
+		modelo.addColumn("Precio"); 
+		modelo.addColumn("Descripcion");
 		
-		btnListar = new JButton("Listar");
+		JButton btnListar = new JButton("Listar");
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -229,17 +232,8 @@ public class guiVehiculos extends JFrame implements ActionListener {
 			}
 		});
 		btnListar.setFont(new Font("Arial", Font.PLAIN, 14));
-		btnListar.setBounds(10, 273, 102, 23);
+		btnListar.setBounds(10, 267, 102, 23);
 		contentPane.add(btnListar);
-		
-		//Modelo
-		modelo = new DefaultTableModel(); 
-		modelo.addColumn("Código"); 
-		modelo.addColumn("Tipo Auto"); 
-		modelo.addColumn("Marca"); 
-		modelo.addColumn("Precio"); 
-		modelo.addColumn("Potencia"); 
-		modelo.addColumn("Descripcion");
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnModificar) {
@@ -268,15 +262,15 @@ public class guiVehiculos extends JFrame implements ActionListener {
         // adiciona un nuevo alumno verificando que el código no se repita.
         int cod = Integer.parseInt(txtCodigo.getText());
         String tip = txtTipo.getText().toString();
-        String mar = txtMarca.getText().toString();
+        String fec = txtFecha.getText().toString();
+        String hor = txtHora.getText().toString();
         Double pre = Double.parseDouble(txtPrecio.getText());
-        String pot = txtPotencia.getText().toString();
         String des = txtDescripcion.getText().toString();
         
         // buscando el codigo si existe o no.
-        Vehiculos resultado = aa.buscar(cod);
+        Servicio resultado = aa.buscar(cod);
         if (resultado == null) {
-            aa.adicionar(new Vehiculos(cod, tip, mar, pre, pot, des));
+            aa.adicionar(new Servicio(cod, tip, fec, hor, pre, des));
             modelo.setRowCount(0); tblTabla.setModel(modelo);
             LimpiarControles();
             Listar(aa);
@@ -289,26 +283,26 @@ public class guiVehiculos extends JFrame implements ActionListener {
 	protected void actionPerformedBtnConsultar(ActionEvent e) {
 		int cod = Integer.parseInt(JOptionPane.showInputDialog("Ingrese Codigo"));
         //int cod = Integer.parseInt(txtCodigo.getText());
-        Vehiculos Resultado = aa.buscar(cod);
+        Servicio Resultado = aa.buscar(cod);
         int pos = aa.buscarPosicion(cod);
         if (Resultado != null) {
             txtCodigo.setText(Integer.toString(aa.obtener(pos).getCodigo()));
             txtTipo.setText(aa.obtener(pos).getTipo());
-            txtMarca.setText(aa.obtener(pos).getMarca());
+            txtFecha.setText(aa.obtener(pos).getFecha());
+            txtHora.setText(aa.obtener(pos).getHora());
             txtPrecio.setText(Double.toString(aa.obtener(pos).getPrecio()));
-            txtPotencia.setText(aa.obtener(pos).getPotencia());
             txtDescripcion.setText(aa.obtener(pos).getDescripcion());
             
             
             // En la tabla
             cod = aa.obtener(pos).getCodigo();
             String tip = aa.obtener(pos).getTipo();
-            String mar = aa.obtener(pos).getMarca();
-            double pre = aa.obtener(pos).getPrecio();
-            String pot = aa.obtener(pos).getPotencia();
+            String fec = aa.obtener(pos).getFecha();
+            String hor = aa.obtener(pos).getHora();
+            double pre = aa.obtener(pos).getPrecio();;
             String des = aa.obtener(pos).getDescripcion();
             modelo.setRowCount(0);
-            Object[] fila = { cod, tip, mar, pre, pot, des};
+            Object[] fila = { cod, tip, fec, hor, pre, des};
             modelo.addRow(fila);
             tblTabla.setModel(modelo);
         } else {
@@ -318,7 +312,7 @@ public class guiVehiculos extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedBtnEliminar(ActionEvent e) {
 		int cod =Integer.parseInt(JOptionPane.showInputDialog("Ingrese Codigo"));
-        Vehiculos Resultado = aa.buscar(cod);
+        Servicio Resultado = aa.buscar(cod);
         if (Resultado != null) {
             aa.eliminar(Resultado);
             Listar(aa);
@@ -330,20 +324,20 @@ public class guiVehiculos extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedBtnModificar(ActionEvent e) {
 		int cod =Integer.parseInt(JOptionPane.showInputDialog("Ingrese Codigo"));
-        Vehiculos Resultado = aa.buscar(cod);
+        Servicio Resultado = aa.buscar(cod);
         int pos = aa.buscarPosicion(cod);
         if (Resultado != null) {
             cod = Integer.parseInt(txtCodigo.getText());
             String tip = txtTipo.getText().toString();
-            String mar = txtMarca.getText().toString();
+            String fec = txtFecha.getText().toString();
+            String hor = txtHora.getText().toString();
             Double pre = Double.parseDouble(txtPrecio.getText());
-            String pot = txtPotencia.getText().toString();
             String des = txtDescripcion.getText().toString();
             Resultado.setCodigo(cod);
             Resultado.setTipo(tip);
-            Resultado.setMarca(mar);
+            Resultado.setFecha(fec);
+            Resultado.setHora(hor);
             Resultado.setPrecio(pre);
-            Resultado.setPotencia(pot);
             Resultado.setDescripcion(des);
             aa.modificar(pos, Resultado);
             Listar(aa);
@@ -351,7 +345,7 @@ public class guiVehiculos extends JFrame implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(null, "Registro no Encontrado");
             LimpiarControles();
-        }
+        }        
 	}
 	
 	private void imprimirRepuestos() {
